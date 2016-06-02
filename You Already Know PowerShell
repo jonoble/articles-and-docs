@@ -1,4 +1,4 @@
-If you have experience of any programming or scripting language, you'll find the concepts that you're already familiar with in PowerShell. The syntax may be different, but as you'll see from the following examples, you can likely get to grips with that quite easily. If your experience includes object-oriented programming, you're in an even better place to understand how PowerShell works.
+If you have experience of any programming or scripting language, you'll find the concepts that you're already familiar with in PowerShell. The syntax and keywords may be different, but as you'll see from the following examples, you can likely get to grips with that quite easily. If your experience includes object-oriented programming, you're in an even better place to understand how PowerShell works.
 
 $myvar = 4
 
@@ -12,3 +12,18 @@ So far $myvar is the integer 4. If I want it to be a string, I put it in quotes.
 
 $mystring = '4'
 
+So if assignment uses = what about comparison?
+
+$myvar -eq 4
+
+...is true, whereas...
+
+$myvar -ne 4
+
+...is false. Other falsehoods are:
+
+$myvar -le 3
+$myvar -ge 5
+
+i.e. 'less than or equal to 3' and 'greater than or equal to 5'
+The most common error that I see (and indeed occasionally commit) is the misuse of an = in a boolean expression when it should have been -eq.
