@@ -1,0 +1,14 @@
+If you have experience of any programming or scripting language, you'll find the concepts that you're already familiar with in PowerShell. The syntax may be different, but as you'll see from the following examples, you can likely get to grips with that quite easily. If your experience includes object-oriented programming, you're in an even better place to understand how PowerShell works.
+
+$myvar = 4
+
+It's obvious what is going on here, right? I'm assigning a variable the value 4. So if I type...
+
+$myvar
+
+...I get 4 back. Technically the variable is called myvar, not $myvar. The $ refers to "the value of" myvar.
+
+So far $myvar is the integer 4. If I want it to be a string, I put it in quotes.
+
+$mystring = '4'
+
