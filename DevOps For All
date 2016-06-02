@@ -1,0 +1,29 @@
+There are many ways in which any organisation can benefit from adopting DevOps practices. It doesn't matter which industry they are in, or their size, or which platform(s) they are using. You don't have to go "all in" on DevOps to gain some of the benefits, in fact, because DevOps is at least as much about culture as it is about technology, trying to do a wholesale change of culture and deciding that you're going to "implement DevOps" is probably not the best approach. There are wins to be had with a number of these practices in isolation, and it will likely be much easier to pick one thing and give it time to bed in before you move on to the next thing.
+
+Your organisation may decide to implement these practices in a different order, which is fine - this may not be the more appropriate route into DevOps for you.
+
+Put Everything in Source Control
+--------------------------------
+
+Having all of your code, scripts, and configurations in a single source code repository provides a single source of truth which is available to all the relevant people. This removes knowledge silos and reliance on single domain-experts. Everything being version controlled means that you have a full audit of changes; who made what change, when, and why. That means you can roll backwards and forwards in time to use code and configurations in different states.
+
+The message from the DevOps community is basically: "Use source control. Whatever source control you've got is fine, but if you don't currently have any; use Git." There are a number of reasons for this:
+	- Git has excellent cross-platform support. You can use it with whichever editor/IDE you want on Windows, Linux, or Mac.
+	- Most software tools that are used in the DevOps toolchain integrate with Git.
+	- Git supports branching, which offers more flexibility for a diverse team working on different areas and merging into a single source control repository. It also allows you to ensure that anything going into the Master (or production) branch has passed tests when using an appropriate build tool.
+	- Git is widely used in the community. Community resources are increasingly hosted on GitHub, and should you aspire to contribute some of your work back to the community, it makes sense to be using the same tool.
+	- Git is free to use standalone, although there may be a cost involved in hosting private repositories.
+
+Hosting your Git repository on a system such as Visual Studio Team Services offers a number of advantages:
+	- When something is checked in to Git, you can have VSTS set up to automatically trigger tests on everything. When all the tests are successfully passed, you could have VSTS setup to automatically generate a release. When tests fail, VSTS wouldn't merge the changes into the Master code branch for production use.
+	- Changes to code can be linked to Work Items on the VSTS Kanban board, which can be used for tracking of work/bugs, and is useful for visualisation of work in progress (WIP).
+	- Microsoft's Code Search extension in VSTS allows rich searching through everything in the repository.
+
+In addition to code, scripts, and configurations, there are advantages using a version controlled repository for certain documents. By checking documents in to Git, you can see the history of edits, which may be important when it would help to know how a document and a configuration both looked at some point in the past. By having documents in a cloned Git repository, you also have access to them when network conditions may otherwise not allow.
+
+In order to simplify things going forward, I'm going to refer to code, scripts, configurations (and even some documentation) as "code".
+
+Implement Continuous Integration and Automated Testing
+------------------------------------------------------
+
+Use a built engine that automatically runs tests against checked-in code. You may have some tests that cover a lot of code (such as a generic best practice analyzer like PowerShell Script Analyzer), or they might be unit tests that are specific to a particular piece of functionality. Ideally tests should be written alongside, or even before the code that they are to test, but it is also essential to iteratively learn from failures and add more tests over time to mitigate repeat issues. It is also essential that no code can go into production while any tests are failing. This model improves confidence that new or changed code isn't going to result in outages, but obviously the level of confidence that can be achieved is only as high as the quality of the tests you're running. This is why many organisations have their best developers focused on writing the tests, rather than the functionality.
